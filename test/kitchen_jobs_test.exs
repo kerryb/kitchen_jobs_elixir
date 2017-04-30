@@ -24,4 +24,24 @@ defmodule KitchenJobsTest do
       """
     end
   end
+
+  describe "KitchenJobs.parse/1" do
+    test "discards the first line, then splits the rest into pairs" do
+      input = """
+      3
+      6 3
+      2 4 1
+      3 2
+      3 2
+      8 2
+      3 8
+      """
+
+      assert KitchenJobs.parse(input) == [
+        ["6 3", "2 4 1"],
+        ["3 2", "3 2"],
+        ["8 2", "3 8"],
+      ]
+    end
+  end
 end

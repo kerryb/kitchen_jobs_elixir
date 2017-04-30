@@ -10,6 +10,9 @@ defmodule KitchenJobs do
   end
 
   def parse(input) do
-    []
+    input
+    |> String.split("\n")
+    |> Enum.drop(1)
+    |> Enum.chunk(2)
   end
 end
