@@ -2,7 +2,26 @@ defmodule KitchenJobsTest do
   use ExUnit.Case
   doctest KitchenJobs
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  describe "Integration" do
+    test "works for the example given in the problem statement" do
+      input = """
+      3
+      6 3
+      2 4 1
+      3 2
+      3 2
+      8 2
+      3 8
+      """
+
+      assert KitchenJobs.main(input) == """
+      3 6
+      5
+      1
+
+      1 4 6
+      2 5 7
+      """
+    end
   end
 end
