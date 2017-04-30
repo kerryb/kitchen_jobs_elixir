@@ -12,6 +12,17 @@ defmodule KitchenJobs.Roster do
   end
 
   def output(roster) do
-    ""
+    roster
+    |> allocate
+    |> output_allocations
+  end
+
+  defp allocate(roster) do
+    remaining_jobs = Enum.to_list(1..roster.total) -- roster.completed
+    {Enum.take_every(remaining_jobs, 2), Enum.drop_every(remaining_jobs, 2)}
+  end
+
+  defp output_allocations({chef_jobs, assistant_jobs}) do
+    "#{Enum.join chef_jobs, " "}\n#{Enum.join assistant_jobs, " "}\n"
   end
 end

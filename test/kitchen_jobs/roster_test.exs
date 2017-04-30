@@ -8,5 +8,12 @@ defmodule KitchenJobs.RosterTest do
       assert Roster.parse(["6 3", "2 4 1"]) == %Roster{total: 6, completed: [2, 4, 1]}
     end
   end
+
+  describe "KitchenJobs.Roster.output" do
+    test "allocates remaining jobs alternately, and prints out the allocations" do
+      roster = %Roster{total: 6, completed: [2, 4, 1]}
+      assert Roster.output(roster) == "3 6\n5\n"
+    end
+  end
 end
 
